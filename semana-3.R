@@ -10,7 +10,7 @@ filas_sin_info <- which(Nacidos_2019$IDFACTORRH == "9"
                         | Nacidos_2019$TIPO_PARTO == "9")  
 
 tabla_inicial <- data.frame(Nacidos_2019$IDFACTORRH, Nacidos_2019$TIPO_PARTO)
-tabla_filtrada <- tabla[- filas_sin_info, ]
+tabla_filtrada <- tabla_inicial[-filas_sin_info, ]
 tabla_contingencia <- table(tabla_filtrada)
 tabla_contingencia
 
@@ -26,21 +26,27 @@ assoc(tabla_contingencia,
 # 3.3 Probabilidad de que un recién nacido nazca por cesárea
 total_datos <- sum(tabla_contingencia)
 total_datos
-pp_cesarea <- sum(tabla_contingencia[2, ])
+pp_cesarea <- sum(tabla_contingencia[ , 2])
 pp_cesarea
 prob_cesarea <- pp_cesarea/total_datos
 prob_cesarea
 
 # 3.4 Probabilidad de que un recién nacido nazca con factor RH Negativo
 
-rh_negativo <- sum(tabla_contingencia[ ,2])
+rh_negativo <- sum(tabla_contingencia[2, ])
 prob_rh_neg <- rh_negativo/total_datos
 prob_rh_neg
 
 # 3.5 Probabilidad de si un bebé tiene RH negativo entonces este
 # nazca por parto espontáneo.
-15101/rh_negativo
+(15101/rh_negativo)*100
 
+# 3.6
+chisq.test(tabla_contingencia)
+
+
+ji = chisq.test(tabla_contingencia)
+ji_c = ji$statistic
 
 
 
