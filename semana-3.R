@@ -47,15 +47,16 @@ chisq.test(tabla_contingencia)
 
 ji = chisq.test(tabla_contingencia)
 ji_c = ji$statistic
+
 total_datos <- sum(tabla_contingencia)
 filas = nrow(tabla_contingencia)
 colum = ncol(tabla_contingencia)
 
-# Índice V de Kramer:
+# 3.7 índice V de Kramer:
 v_c = sqrt(ji_c/(total_datos*min((filas-1),(colum-1))))
 v_c
 
-# índice de Karl-Pearson
+# 3.8 índice de Karl-Pearson
 k_p = sqrt(ji_c/(ji_c + total_datos))
 k_p
 sqrt(((min(nrow(tabla_contingencia), ncol(tabla_contingencia))) -1)/min(nrow(tabla_contingencia), ncol(tabla_contingencia)))
