@@ -62,18 +62,14 @@ ad.test(tabla[, 1])
 ad.test(tabla[, 2])
 
 
-
 library(testforDEP)
 library(Rcpp)
-#length(tabla[,1])
-#testforDEP(x = tabla[, 1], y = tabla[, 2], test = "MIC", p.opt = "MC", num.MC = 1000)
-#?sample
+
 # Muestra de 1000 datos
 filas3 <- sample(1:length(tabla[, 1]), size = 1000, replace = TRUE, prob = NULL)
 muestra <- tabla[filas3, ]
 head(muestra)
 tail(muestra)
-#?testforDEP
 
 testforDEP(x = muestra[, 1], y = muestra[, 2], test = "MIC", p.opt = "MC",
            num.MC = 100)
