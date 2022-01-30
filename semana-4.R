@@ -26,7 +26,7 @@ filas1 <- which(tabla[, 1] > 601)
 tabla <- tabla[-filas1, ]
 
 # Histograma final
-hist(tabla[,1], breaks = 100, main = "Histograma de la tiempo en el trabajo", xlab = "Tiempo",
+hist(tabla[,1], breaks = 100, main = "Histograma de tiempo en el trabajo", xlab = "Tiempo",
      ylab = "Frecuencia")
 
 
@@ -65,7 +65,7 @@ ad.test(tabla[, 2])
 library(testforDEP)
 library(Rcpp)
 
-# Muestra de 1000 datos
+# Muestra de 2000 datos
 filas3 <- sample(1:length(tabla[, 1]), size = 1000, replace = TRUE, prob = NULL)
 muestra <- tabla[filas3, ]
 head(muestra)
@@ -78,3 +78,4 @@ testforDEP(x = muestra[, 1], y = muestra[, 2], test = "MIC", p.opt = "MC",
 testforDEP(x = muestra[, 1], y = muestra[, 2], test = "VEXLER", p.opt = "MC",
            num.MC = 100)
 # resultado de test VEXLER = Slot "TS":[1] 526.0407  Slot "p_value": [1] 0.950495
+        
